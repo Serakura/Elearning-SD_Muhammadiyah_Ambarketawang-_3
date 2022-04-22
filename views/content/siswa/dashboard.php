@@ -1,3 +1,3 @@
 <?php
 
-echo "wkwk";
+echo "wkwk ajnay";
