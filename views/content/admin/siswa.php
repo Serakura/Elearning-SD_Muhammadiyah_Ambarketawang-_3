@@ -9,7 +9,6 @@
                 <th scope="col">No</th>
                 <th scope="col">Nama</th>
                 <th scope="col">NIS</th>
-                <th scope="col">Password</th>
                 <th scope="col">Jenis Kelamin</th>
                 <th scope="col">Alamat</th>
                 <th scope="col">Telepon</th>
@@ -30,7 +29,6 @@
                     <td><?php echo $nomor++; ?></td>
                     <td><?php echo $d['nama']; ?></td>
                     <td><?php echo $d['nis']; ?></td>
-                    <td><?php echo $d['password']; ?></td>
                     <td><?php echo $d['jenis_kelamin']; ?></td>
                     <td><?php echo $d['alamat']; ?></td>
                     <td><?php echo $d['telp']; ?></td>
@@ -70,7 +68,8 @@
                                         </div>
                                         <div class="form-group">
                                             <label for="password" class="col-form-label">Password:</label>
-                                            <input type="text" class="form-control" id="password" name="password" value="<?php echo $row['password']; ?>" required>
+                                            <input type="password" class="form-control" id="password" name="password" value="<?php $password = md5($row['password']);
+                                                                                                                                echo $password; ?>" required>
                                         </div>
                                         <div class="form-group">
                                             <label for="jeniskelamin" class="col-form-label">Jenis Kelamin:</label>
@@ -89,7 +88,7 @@
                                             <input type="number" class="form-control" id="telepon" name="telepon" value="<?php echo $row['telp']; ?>" required>
                                         </div>
                                         <div class="form-group">
-                                            <label for="password" class="col-form-label">Email:</label>
+                                            <label for="email" class="col-form-label">Email:</label>
                                             <input type="email" class="form-control" id="email" name="email" value="<?php echo $row['email']; ?>" required>
                                         </div>
                                         <div class="form-group">

@@ -20,12 +20,10 @@ $query = mysqli_query($koneksi, "INSERT INTO tugas
 
 if ($query) {
     echo "<script>
-    alert('Tugas berhasil terupload');
-    window.location='../../../index.php?page=mapel&id_mapel=$mapel';
+    window.location='../../../index.php?page=mapel&id_mapel=$mapel&msg=Berhasil membuat tugas';
 </script>";
 } else {
     echo "<script>
-    alert('Tugas gagal terupload');
-    window.location='../../../index.php?page=mapel&id_mapel=$mapel';
+    window.location='../../../index.php?page=mapel&id_mapel=$mapel&msg=Gagal membuat tugas';
 </script>";
 }

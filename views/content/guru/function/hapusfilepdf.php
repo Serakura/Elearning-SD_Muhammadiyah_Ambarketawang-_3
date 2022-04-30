@@ -9,7 +9,6 @@ if ($query) {
     $file_path = '../../../../upload_files/' . $file_lama;
     @unlink($file_path);
     echo "<script>
-        alert('File berhasil terhapus');
-        window.location='../../../index.php?page=editmateri&id_mapel=$mapel&id_materi=$id_materi';
+        window.location='../../../index.php?page=editmateri&id_mapel=$mapel&id_materi=$id_materi&msg=Berhasil menghapus file pdf';
     </script>";
 }

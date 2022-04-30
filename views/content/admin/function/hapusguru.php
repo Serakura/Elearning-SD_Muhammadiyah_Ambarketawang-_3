@@ -5,8 +5,7 @@ $hapus = mysqli_query($koneksi, "DELETE FROM guru WHERE nip='$nip'");
 if ($hapus) {
 ?>
     <script>
-        alert('Data Berhasil di Hapus');
-        document.location = '../../../?page=guru';
+        document.location = '../../../?page=guru&msg=Berhasil menghapus data guru';
     </script>
 <?php
 }

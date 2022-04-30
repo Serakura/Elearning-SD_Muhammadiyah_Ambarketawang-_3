@@ -127,7 +127,7 @@
                 <i class="fas fa-fw fa-user-tie"></i>
                 <span>Dashboard</span></a>
         </li>
-
+        <hr class="sidebar-divider my-0">
         <li class="nav-item">
             <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsePages" aria-expanded="true" aria-controls="collapsePages">
                 <i class="fas fa-fw fa-folder"></i>
@@ -135,10 +135,23 @@
             </a>
             <div id="collapsePages" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
                 <div class="bg-white py-2 collapse-inner rounded">
-                    <h6 class="collapse-header">Login Screens:</h6>
-                    <a class="collapse-item" href="login.html">Login</a>
-                    <a class="collapse-item" href="register.html">Register</a>
-                    <a class="collapse-item" href="forgot-password.html">Forgot Password</a>
+                    <h6 class="collapse-header">List Mata Pelajaran :</h6>
+                    <?php
+                    $datas = '';
+                    $nis = $_SESSION['username'];
+                    $ck = mysqli_query($koneksi, "SELECT id_kelas FROM siswa WHERE nis = $nis ");
+                    while ($row = mysqli_fetch_row($ck)) {
+                        $datas = $row[0];
+                    }
+                    $query = mysqli_query($koneksi, "SELECT id_mapel,kd_mapel,nama_mapel,kelas.nama_kelas,guru.nama FROM `mata_pelajaran` INNER JOIN kelas ON kelas.id_kelas = mata_pelajaran.id_kelas INNER JOIN guru ON guru.id_guru = mata_pelajaran.id_guru WHERE kelas.id_kelas=$datas");
+                    while ($d = mysqli_fetch_array($query)) {
+                    ?>
+                        <!-- <a class="collapse-item" onclick="document.getElementById('<?php echo $row['id_mapel']; ?>').submit();"><?php echo $d['nama_mapel']; ?></a> -->
+                        <a class="collapse-item" href="index.php?page=mapel&id_mapel=<?php echo $d['id_mapel'];  ?>"><?php echo $d['nama_mapel'] . " - " . $d['nama_kelas']; ?></a>
+                    <?php
+                    }
+
+                    ?>
                 </div>
             </div>
         </li>

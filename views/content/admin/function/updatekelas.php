@@ -12,7 +12,7 @@ $query = mysqli_query($koneksi, "UPDATE kelas SET nama_kelas='$nama' WHERE id_ke
 if ($query) {
     echo "<script>
     alert('Data Berhasil diEdit');
-    window.location='../../../index.php?page=kelas';</script>";
+    window.location='../../../index.php?page=kelas&msg=Berhasil mengupdate data kelas';</script>";
 } else {
     return false;
 }

@@ -3,7 +3,7 @@ require '../../../../database/db.php';
 
 $nama       = $_POST['nama'];
 $nip        = $_POST['nip'];
-$password   = $_POST['password'];
+$password   = md5($_POST['password']);
 $jenkel     = $_POST['jeniskelamin'];
 $alamat     = $_POST['alamat'];
 $telp       = $_POST['telepon'];
@@ -16,7 +16,7 @@ $query = mysqli_query($koneksi, "UPDATE guru SET nama='$nama', password='$passwo
 if ($query) {
     echo "<script>
     alert('Data Berhasil diEdit');
-    window.location='../../../index.php?page=guru';</script>";
+    window.location='../../../index.php?page=guru&msg=Berhasil mengupdate data guru';</script>";
 } else {
     return false;
 }

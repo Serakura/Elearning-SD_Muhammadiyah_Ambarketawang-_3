@@ -8,8 +8,7 @@ $cek_kelas = mysqli_query($koneksi, "SELECT * FROM kelas WHERE nama_kelas='$nama
 if (mysqli_num_rows($cek_kelas) > 0) {
 ?>
     <script>
-        alert('Nama Kelas Sudah digunakan!! || Silahkan Input Ulang!');
-        window.location = '../../../index.php?page=kelas';
+        window.location = '../../../index.php?page=kelas&msg=Gagal menambahkan data kelas karena sudah digunakan';
     </script>
 
 <?php
@@ -22,9 +21,7 @@ if (mysqli_num_rows($cek_kelas) > 0) {
 
 
     echo "<script>
- 		alert('Data Berhasil diTambahkan');
- 		window.location='../../../index.php?page=kelas';
-
+    window.location='../../../index.php?page=kelas&msg=Berhasil menambahkan data kelas';
  	</script>";
 }
 

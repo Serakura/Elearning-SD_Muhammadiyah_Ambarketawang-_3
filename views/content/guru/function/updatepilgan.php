@@ -15,12 +15,10 @@ $query = mysqli_query($koneksi, "UPDATE pilihan_ganda SET soal='$soal', jawaban_
 
 if ($query) {
     echo "<script>
-    alert('Soal berhasil terupdate');
-    window.location='../../../index.php?page=buatsoal&id_mapel=$mapel&id_tugas=$tugas';
+    window.location='../../../index.php?page=buatsoal&id_mapel=$mapel&id_tugas=$tugas&msg=Berhasil mengupdate soal pilihan ganda';
 </script>";
 } else {
     echo "<script>
-    alert('Soal gagal terupdate');
-    window.location='../../../index.php?page=pilgan&id_mapel=$mapel&id_tugas=$tugas';
+    window.location='../../../index.php?page=pilgan&id_mapel=$mapel&id_tugas=$tugas&msg=Gagal mengupdate soal pilihan ganda';
 </script>";
 }

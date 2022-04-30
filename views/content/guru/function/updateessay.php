@@ -11,12 +11,10 @@ $query = mysqli_query($koneksi, "UPDATE essay SET soal='$soal' WHERE id_essay='$
 
 if ($query) {
     echo "<script>
-    alert('Soal berhasil terupdate');
-    window.location='../../../index.php?page=buatsoal&id_mapel=$mapel&id_tugas=$tugas';
+    window.location='../../../index.php?page=buatsoal&id_mapel=$mapel&id_tugas=$tugas&msg=Berhasil mengupdate soal essay';
 </script>";
 } else {
     echo "<script>
-    alert('Soal gagal terupdate');
-    window.location='../../../index.php?page=essay&id_mapel=$mapel&id_tugas=$tugas';
+    window.location='../../../index.php?page=essay&id_mapel=$mapel&id_tugas=$tugas&msg=Gagal mengupdate soal essay';
 </script>";
 }

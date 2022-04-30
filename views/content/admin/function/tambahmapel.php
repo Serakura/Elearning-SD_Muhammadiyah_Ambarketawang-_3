@@ -12,8 +12,7 @@ $cek_mapel = mysqli_query($koneksi, "SELECT * FROM mata_pelajaran WHERE kd_mapel
 if (mysqli_num_rows($cek_mapel) > 0) {
 ?>
     <script>
-        alert('Kode Mapel Sudah digunakan!! || Silahkan Input Ulang!');
-        window.location = '../../../index.php?page=mapel';
+        window.location = '../../../index.php?page=mapel&msg=Gagal menambahkan data mata pelajaran karena Kode Mata Pelajaran sudah digunakan';
     </script>
 
 
@@ -28,8 +27,7 @@ if (mysqli_num_rows($cek_mapel) > 0) {
 
     echo "
     <script>
-    alert('Data Berhasil diTambahkan');
- 		window.location='../../../index.php?page=mapel';
+ 		window.location='../../../index.php?page=mapel&msg=Berhasil menambahkan data mata pelajaran';
  	</script>
      ";
 }

@@ -9,7 +9,6 @@
                 <th scope="col">No</th>
                 <th scope="col">Nama</th>
                 <th scope="col">NIP</th>
-                <th scope="col">Password</th>
                 <th scope="col">Jenis Kelamin</th>
                 <th scope="col">Alamat</th>
                 <th scope="col">Telepon</th>
@@ -29,7 +28,6 @@
                     <td><?php echo $nomor++; ?></td>
                     <td><?php echo $d['nama']; ?></td>
                     <td><?php echo $d['nip']; ?></td>
-                    <td><?php echo $d['password']; ?></td>
                     <td><?php echo $d['jenis_kelamin']; ?></td>
                     <td><?php echo $d['alamat']; ?></td>
                     <td><?php echo $d['telp']; ?></td>
@@ -68,7 +66,7 @@
                                         </div>
                                         <div class="form-group">
                                             <label for="password" class="col-form-label">Password:</label>
-                                            <input type="text" class="form-control" id="password" name="password" value="<?php echo $row['password']; ?>" required>
+                                            <input type="password" class="form-control" id="password" name="password" value="<?php echo md5($row['password']); ?>" required>
                                         </div>
                                         <div class="form-group">
                                             <label for="jeniskelamin" class="col-form-label">Jenis Kelamin:</label>

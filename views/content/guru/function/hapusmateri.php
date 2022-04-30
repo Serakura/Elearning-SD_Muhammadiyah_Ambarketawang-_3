@@ -11,8 +11,7 @@ while ($rw = mysqli_fetch_row($query)) {
     $delete = mysqli_query($koneksi, "DELETE FROM materi WHERE id_materi=$materi");
     if ($delete) {
         echo "<script>
-    alert('Materi berhasil terhapus');
-    window.location='../../../index.php?page=mapel&id_mapel=$mapel';
+    window.location='../../../index.php?page=mapel&id_mapel=$mapel&msg=Berhasil menghapus materi';
 </script>";
     }
 }

@@ -25,8 +25,7 @@ window.location='../../../index.php?page=mapel&id_mapel=$mapel';
     $ekstensifile    = strtolower(end($ekstensifile));
     if ($ekstensifile != 'pdf') {
         echo "<script>
-                alert('yang anda upload bukan .pdf');
-                window.location='../../../index.php?page=buatmateri&id_mapel=$mapel';
+                window.location='../../../index.php?page=buatmateri&id_mapel=$mapel&msg=Gagal membuat materi karena file yang anda upload bukan .pdf';
             </script>";
     } else {
         $namaFileBaru  = uniqid() . '_' . $namafile;
@@ -38,13 +37,11 @@ window.location='../../../index.php?page=mapel&id_mapel=$mapel';
                                  VALUES 
                                  ('$judul','$deskripsi','$materi','$namaFileBaru','$date','$mapel')");
             echo "<script>
-            alert('Materi berhasil terupload');
-            window.location='../../../index.php?page=mapel&id_mapel=$mapel';
+            window.location='../../../index.php?page=mapel&id_mapel=$mapel&msg=Berhasil membuat materi';
         </script>";
         } else {
             echo "<script>
-            alert('gagal membuat materi');
-            window.location='../../../index.php?page=buatmateri&id_mapel=$mapel';
+            window.location='../../../index.php?page=buatmateri&id_mapel=$mapel&msg=Gagal membuat materi';
         </script>";
         }
     }
