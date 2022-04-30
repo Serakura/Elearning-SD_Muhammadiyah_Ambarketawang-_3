@@ -21,7 +21,29 @@ if (isset($_GET["page"])) {
     ?>
 
 <body id="page-top">
+    <?php if (isset($_GET['msg'])) { ?>
+        <div aria-live="polite" aria-atomic="true" class="position-relative" data-autohide="false">
+            <!-- Position it: -->
+            <!-- - `.toast-container` for spacing between toasts -->
+            <!-- - `.position-absolute`, `top-0` & `end-0` to position the toasts in the upper right corner -->
+            <!-- - `.p-3` to prevent the toasts from sticking to the edge of the container  -->
+            <div class="toast-container position-absolute top-0 end-0 p-3" style="z-index: 10;">
 
+                <!-- Then put toasts within -->
+                <div id="toast-delayer" class="toast" role="alert" aria-live="assertive" aria-atomic="true" data-delay="3000" data-bs-delay="5000">
+                    <div class="toast-header">
+                        <strong class="me-auto">Bootstrap</strong>
+                        <small class="text-muted">just now</small>
+                        <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
+                    </div>
+                    <div class="toast-body">
+                        <?= ($_GET['msg']); ?>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    <?php } ?>
     <!-- Page Wrapper -->
     <div id="wrapper">
 
@@ -132,6 +154,12 @@ if (isset($_GET["page"])) {
                                                                                                 }
                                                                                             } else if ($page == "rekapnilai") {
                                                                                                 echo  "Rekap Nilai";
+                                                                                            } else if ($page == "lembar_jawab") {
+                                                                                                $a = $_GET['id_mapel'];
+                                                                                                $q = mysqli_query($koneksi, "SELECT nama_mapel,kelas.nama_kelas FROM mata_pelajaran INNER JOIN kelas ON kelas.id_kelas = mata_pelajaran.id_kelas WHERE id_mapel = $a");
+                                                                                                while ($rw = mysqli_fetch_row($q)) {
+                                                                                                    echo  $rw[0] . " - $rw[1]" . " (Lembar Jawaban)";
+                                                                                                }
                                                                                             } else {
                                                                                                 echo $page;
                                                                                             }
@@ -145,7 +173,11 @@ if (isset($_GET["page"])) {
                     </div>
 
                     <!-- konten ditampilkan disini -->
-                    <?php include "content/" . $_SESSION['role'] . "/" . $page . ".php"; ?>
+                    <?php if ($page == 'profile') {
+                        include "content/" . "all" . "/" . $page . ".php";
+                    } else {
+                        include "content/" . $_SESSION['role'] . "/" . $page . ".php";
+                    } ?>
                     <!-- ini batas penutup konten -->
 
                 </div>
@@ -180,12 +212,12 @@ if (isset($_GET["page"])) {
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Ready to Leave?</h5>
+                    <h5 class="modal-title" id="exampleModalLabel">Yakin mau keluar?</h5>
                     <button class="close" type="button" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">×</span>
                     </button>
                 </div>
-                <div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
+                <div class="modal-body">Tekan tombol "Logout" untuk keluar dari akunmu</div>
                 <div class="modal-footer">
                     <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
                     <a class="btn btn-primary" href="../function/funct_logout.php">Logout</a>
@@ -215,7 +247,7 @@ if (isset($_GET["page"])) {
                         </div>
                         <div class="form-group">
                             <label for="password" class="col-form-label">Password:</label>
-                            <input type="text" class="form-control" id="password" name="password" required>
+                            <input type="password" class="form-control" id="password" name="password" required>
                         </div>
                         <div class="form-group">
                             <label for="jeniskelamin" class="col-form-label">Jenis Kelamin:</label>
@@ -289,7 +321,7 @@ if (isset($_GET["page"])) {
                         </div>
                         <div class="form-group">
                             <label for="password" class="col-form-label">Password:</label>
-                            <input type="text" class="form-control" id="password" name="password" required>
+                            <input type="password" class="form-control" id="password" name="password" required>
                         </div>
                         <div class="form-group">
                             <label for="jeniskelamin" class="col-form-label">Jenis Kelamin:</label>
@@ -388,7 +420,6 @@ if (isset($_GET["page"])) {
             </div>
         </div>
     </div>
-
 
     <?php include 'layouts/script.php' ?>
     <script src="https://cdn.datatables.net/1.11.4/js/jquery.dataTables.min.js"></script>

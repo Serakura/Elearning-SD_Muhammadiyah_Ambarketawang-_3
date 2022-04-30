@@ -5,8 +5,7 @@ $hapus = mysqli_query($koneksi, "DELETE FROM mata_pelajaran WHERE kd_mapel='$kod
 if ($hapus) {
 ?>
     <script>
-        alert('Data Berhasil di Hapus');
-        document.location = '../../../?page=mapel';
+        document.location = '../../../?page=mapel&msg=Berhasil menghapus data mata pelajaran';
     </script>
 <?php
 }

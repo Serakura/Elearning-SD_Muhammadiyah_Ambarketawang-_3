@@ -17,12 +17,10 @@ $query = mysqli_query($koneksi, "UPDATE tugas SET judul_tugas='$judul', deskrips
 
 if ($query) {
     echo "<script>
-    alert('Tugas berhasil terupdate');
-    window.location='../../../index.php?page=mapel&id_mapel=$mapel';
+    window.location='../../../index.php?page=mapel&id_mapel=$mapel&msg=Berhasil mengupdate tugas';
 </script>";
 } else {
     echo "<script>
-    alert('Tugas gagal terupdate');
-    window.location='../../../index.php?page=edittugas&id_mapel=$mapel'&id_tugas=$tugas';
+    window.location='../../../index.php?page=edittugas&id_mapel=$mapel'&id_tugas=$tugas&msg=Gagal mengupdate materi';
 </script>";
 }

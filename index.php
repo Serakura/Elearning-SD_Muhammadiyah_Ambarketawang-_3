@@ -13,20 +13,24 @@
 
 </head>
 
-<body class="test">
+<body class="test" style="background-color: #4e73df;">
 
-  <div class="container border shadow mt-5" style="width:380px;">
+  <div class="container shadow mt-5" style="width:380px;background-color:white; border:2px solid black; border-radius:25px;">
+    <div class="d-flex justify-content-center mt-4 mb-2">
+      <img src="./assets/logo_sekolah.jpg" alt="" style="width: 150px; height:150px; font-size:100px;">
+    </div>
     <form class="mt-3" action="./function/funct_login.php" method="POST">
       <div class="mb-3">
-        <label for="username" class="form-label">Username</label>
+        <label for="username" class="form-label">Nomor Induk Siswa / Nomor Identitas Pegawai</label>
         <input name="username" type="text" class="form-control" id="username" aria-describedby="username" required autofocus>
-        <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>
       </div>
       <div class="mb-3">
         <label for="password" class="form-label">Password</label>
         <input type="password" class="form-control" id="password" name="password" required autofocus>
       </div>
-      <button type="submit" class="btn btn-primary mb-3" name="login">Login</button>
+      <div class="d-flex justify-content-center mt-4 mb-2">
+        <button type="submit" class="btn btn-primary mb-2 px-4 py-2" name="login">Login</button>
+      </div>
     </form>
   </div>
 

@@ -15,7 +15,7 @@ function cekLogin($username, $password, $tahap)
         case 2:
             $kolom = "nip";
             $role = "guru";
-            $target = "admin";
+            $target = "GURU";
             break;
 
         case 3:
@@ -27,7 +27,7 @@ function cekLogin($username, $password, $tahap)
 ?>
 
             <script>
-                alert('gagal: <?php echo "tahap = " . $tahap . " " .  $username . " " . $password; ?>');
+                alert('gagal login');
                 document.location = "../index.php";
             </script>
 
@@ -35,10 +35,11 @@ function cekLogin($username, $password, $tahap)
 
             break;
     }
-
+    // $password = md5($password);
     $query = mysqli_query($koneksi, "SELECT * FROM $role WHERE $kolom='$username' AND password='$password'");
     if (mysqli_num_rows($query) == 0) {
         $tahap++;
+
         cekLogin($username, $password, $tahap);
     } else {
         $result = mysqli_fetch_assoc($query);
@@ -60,6 +61,7 @@ function cekLogin($username, $password, $tahap)
 if (isset($_POST['login'])) {
     $username = $_POST['username'];
     $password = $_POST['password'];
+    $password = md5($password);
 
     cekLogin($username, $password, 1);
 }

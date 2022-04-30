@@ -3,7 +3,7 @@ require '../../../../database/db.php';
 
 $nama       = $_POST['nama'];
 $nis        = $_POST['nis'];
-$password   = $_POST['password'];
+$password   = md5($_POST['password']);
 $jenkel     = $_POST['jeniskelamin'];
 $alamat     = $_POST['alamat'];
 $telp       = $_POST['telepon'];
@@ -17,7 +17,7 @@ $query = mysqli_query($koneksi, "UPDATE siswa SET nama='$nama', password='$passw
 if ($query) {
     echo "<script>
     alert('Data Berhasil diEdit');
-    window.location='../../../index.php?page=siswa';</script>";
+    window.location='../../../index.php?page=siswa&msg=Berhasil mengupdate data siswa';</script>";
 } else {
     return false;
 }

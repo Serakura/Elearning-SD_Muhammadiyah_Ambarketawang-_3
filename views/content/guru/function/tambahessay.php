@@ -12,12 +12,11 @@ $query = mysqli_query($koneksi, "INSERT INTO essay
 
 if ($query) {
     echo "<script>
-    alert('Soal berhasil terupload');
-    window.location='../../../index.php?page=buatsoal&id_mapel=$mapel&id_tugas=$tugas';
+    window.location='../../../index.php?page=buatsoal&id_mapel=$mapel&id_tugas=$tugas&msg=Berhasil membuat soal essay';
 </script>";
 } else {
     echo "<script>
     alert('Soal gagal terupload');
-    window.location='../../../index.php?page=pilgan&id_mapel=$mapel&id_tugas=$tugas';
+    window.location='../../../index.php?page=pilgan&id_mapel=$mapel&id_tugas=$tugas&msg=Gagal membuat soal essay';
 </script>";
 }

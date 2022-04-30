@@ -3,7 +3,7 @@ require '../../../../database/db.php';
 
 $nama       = $_POST['nama'];
 $nis        = $_POST['nis'];
-$password   = $_POST['password'];
+$password   = md5($_POST['password']);
 $jenkel     = $_POST['jeniskelamin'];
 $alamat     = $_POST['alamat'];
 $telp       = $_POST['telepon'];
@@ -17,8 +17,7 @@ $cek_nis = mysqli_query($koneksi, "SELECT * FROM siswa WHERE nis='$nis'");
 if (mysqli_num_rows($cek_nis) > 0) {
 ?>
     <script>
-        alert('Nomor NIS Sudah digunakan!! || Silahkan Input Ulang!');
-        window.location = '../../../index.php?page=siswa';
+        window.location = '../../../index.php?page=siswa&msg=Gagal menambahkan data siswa karena NIS sudah digunakan';
     </script>
 
 
@@ -33,8 +32,7 @@ if (mysqli_num_rows($cek_nis) > 0) {
 
     echo "
     <script>
-    alert('Data Berhasil diTambahkan');
- 		window.location='../../../index.php?page=siswa';
+ 		window.location='../../../index.php?page=siswa&msg=Berhasil menambahkan data siswa';
  	</script>
      ";
 }

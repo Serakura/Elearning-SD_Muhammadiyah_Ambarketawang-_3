@@ -12,8 +12,7 @@ if (mysqli_num_rows($pilgan) == 0 && mysqli_num_rows($essay) == 0 && mysqli_num_
     $delete = mysqli_query($koneksi, "DELETE FROM tugas WHERE id_tugas=$tugas");
     if ($delete) {
         echo "<script>
-    alert('Tugas berhasil terhapus');
-    window.location='../../../index.php?page=mapel&id_mapel=$mapel';
+    window.location='../../../index.php?page=mapel&id_mapel=$mapel&msg=Berhasil menghapus tugas';
 </script>";
     }
 } else if (mysqli_num_rows($pilgan) > 0 && mysqli_num_rows($essay) > 0 && mysqli_num_rows($nilai) > 0 && mysqli_num_rows($jawaban) > 0) {
@@ -25,8 +24,7 @@ if (mysqli_num_rows($pilgan) == 0 && mysqli_num_rows($essay) == 0 && mysqli_num_
         $delete = mysqli_query($koneksi, "DELETE FROM tugas WHERE id_tugas=$tugas");
         if ($delete) {
             echo "<script>
-            alert('Tugas berhasil terhapus');
-            window.location='../../../index.php?page=mapel&id_mapel=$mapel';
+            window.location='../../../index.php?page=mapel&id_mapel=$mapel&msg=Berhasil menghapus tugas';
         </script>";
         }
     }
@@ -38,8 +36,7 @@ if (mysqli_num_rows($pilgan) == 0 && mysqli_num_rows($essay) == 0 && mysqli_num_
         $delete = mysqli_query($koneksi, "DELETE FROM tugas WHERE id_tugas=$tugas");
         if ($delete) {
             echo "<script>
-            alert('Tugas berhasil terhapus');
-            window.location='../../../index.php?page=mapel&id_mapel=$mapel';
+            window.location='../../../index.php?page=mapel&id_mapel=$mapel&msg=Berhasil menghapus tugas';
         </script>";
         }
     }
@@ -51,14 +48,12 @@ if (mysqli_num_rows($pilgan) == 0 && mysqli_num_rows($essay) == 0 && mysqli_num_
         $delete = mysqli_query($koneksi, "DELETE FROM tugas WHERE id_tugas=$tugas");
         if ($delete) {
             echo "<script>
-            alert('Tugas berhasil terhapus');
-            window.location='../../../index.php?page=mapel&id_mapel=$mapel';
+            window.location='../../../index.php?page=mapel&id_mapel=$mapel&msg=Berhasil menghapus tugas';
         </script>";
         }
     }
 } else {
     echo "<script>
-    alert('Tugas gagal terhapus');
-    window.location='../../../index.php?page=mapel&id_mapel=$mapel';
+    window.location='../../../index.php?page=mapel&id_mapel=$mapel&msg=Gagal menghapus tugas';
 </script>";
 }

@@ -3,7 +3,7 @@ require '../../../../database/db.php';
 
 $nama       = $_POST['nama'];
 $nip        = $_POST['nip'];
-$password   = $_POST['password'];
+$password   = md5($_POST['password']);
 $jenkel     = $_POST['jeniskelamin'];
 $alamat     = $_POST['alamat'];
 $telp       = $_POST['telepon'];
@@ -16,8 +16,7 @@ $cek_nip = mysqli_query($koneksi, "SELECT * FROM guru WHERE nip='$nip'");
 if (mysqli_num_rows($cek_nip) > 0) {
 ?>
     <script>
-        alert('Nomor NIP Sudah digunakan!! || Silahkan Input Ulang!');
-        window.location = '../../../index.php?page=guru';
+        window.location = '../../../index.php?page=guru&msg=Gagal menambahkan data guru karena NIP sudah digunakan';
     </script>
 
 <?php
@@ -30,8 +29,8 @@ if (mysqli_num_rows($cek_nip) > 0) {
 
 
     echo "<script>
- 		alert('Data Berhasil diTambahkan');
- 		window.location='../../../index.php?page=guru';
+ 		
+ 		window.location='../../../index.php?page=guru&msg=Berhasil menambahkan data guru';
 
  	</script>";
 }

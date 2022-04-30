@@ -17,12 +17,10 @@ $query = mysqli_query($koneksi, "INSERT INTO pilihan_ganda
 
 if ($query) {
     echo "<script>
-    alert('Soal berhasil terupload');
-    window.location='../../../index.php?page=buatsoal&id_mapel=$mapel&id_tugas=$tugas';
+    window.location='../../../index.php?page=buatsoal&id_mapel=$mapel&id_tugas=$tugas&msg=Berhasil membuat soal pilihan ganda';
 </script>";
 } else {
     echo "<script>
-    alert('Soal gagal terupload');
-    window.location='../../../index.php?page=pilgan&id_mapel=$mapel&id_tugas=$tugas';
+    window.location='../../../index.php?page=pilgan&id_mapel=$mapel&id_tugas=$tugas&msg=Gagal membuat soal pilihan ganda';
 </script>";
 }

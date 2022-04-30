@@ -5,8 +5,7 @@ $hapus = mysqli_query($koneksi, "DELETE FROM siswa WHERE nis='$nis'");
 if ($hapus) {
 ?>
     <script>
-        alert('Data Berhasil di Hapus');
-        document.location = '../../../?page=siswa';
+        document.location = '../../../?page=siswa&msg=Berhasil menghapus data siswa';
     </script>
 <?php
 }
