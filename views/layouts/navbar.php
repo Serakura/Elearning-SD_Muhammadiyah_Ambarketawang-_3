@@ -9,7 +9,7 @@
 
     <div class="d-flex flex-row bd-highlight mr-auto">
         <!-- <img src="../assets/logo_sekolah.png" alt="logo" width="30" class="my-auto"> -->
-        <h5 class="fw-bolder my-auto text-secondary"><b><i>SD Muhammadiyah Ambarketawang 3</i></b></h5>
+        <h5 class="fw-bolder my-auto text-secondary"><b><i>Aplikasi Pencarian Rumah Sakit</i></b></h5>
     </div>
 
     <!-- Topbar Navbar -->
@@ -44,39 +44,15 @@
             <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                 <span class="mr-2 d-none d-lg-inline text-gray-600 small">
                     <?php
-                    // global $koneksi;
-                    $role = $_SESSION['role'];
-                    $username = $_SESSION['username'];
-                    $kolom = "";
-                    switch ($role) {
-                        case "admin":
-                            $kolom = "username";
-                            break;
 
-                        case "guru":
-                            $kolom = "nip";
-                            break;
-
-                        case "siswa":
-                            $kolom = "nis";
-                            break;
-                        default:
-                    }
-                    $query = mysqli_query($koneksi, "SELECT * FROM $role WHERE $kolom='$username'");
-                    $result = mysqli_fetch_assoc($query);
-                    echo $result['nama'];
+                    echo $_SESSION['nama'];;
                     ?>
                 </span>
                 <img class="img-profile rounded-circle" src="../public/admin/img/undraw_profile.svg">
             </a>
             <!-- Dropdown - User Information -->
             <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">
-                <?php if ($role != 'admin') { ?>
-                    <a class="dropdown-item" href="index.php?page=profile">
-                        <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
-                        Profile
-                    </a>
-                <?php } ?>
+
                 <div class="dropdown-divider"></div>
                 <a class="dropdown-item" href="#" data-toggle="modal" data-target="#logoutModal">
                     <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>

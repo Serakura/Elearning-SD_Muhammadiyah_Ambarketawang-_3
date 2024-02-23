@@ -13,7 +13,7 @@ if (isset($_GET["page"])) {
 
 ?>
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" manifest="../assets//manifest/app.manifest">
 
 <head>
     <?php
@@ -32,8 +32,8 @@ if (isset($_GET["page"])) {
                 <!-- Then put toasts within -->
                 <div id="toast-delayer" class="toast" role="alert" aria-live="assertive" aria-atomic="true" data-delay="3000" data-bs-delay="5000">
                     <div class="toast-header">
-                        <strong class="me-auto">Bootstrap</strong>
-                        <small class="text-muted">just now</small>
+                        <strong class="me-auto">Notifikasi</strong>
+                        <small class="text-muted">Baru saja</small>
                         <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
                     </div>
                     <div class="toast-body">
@@ -67,105 +67,21 @@ if (isset($_GET["page"])) {
                     <!-- Page Heading -->
                     <div class="d-sm-flex align-items-center justify-content-between mb-4">
                         <h1 class="h2 mb-0 text-dark text-capitalize font-weight-bold"><?php
-                                                                                        if ($_SESSION['role'] != "admin") {
-                                                                                            if ($page == "mapel") {
-                                                                                                $a = $_GET['id_mapel'];
-                                                                                                $q = mysqli_query($koneksi, "SELECT nama_mapel,kelas.nama_kelas FROM mata_pelajaran INNER JOIN kelas ON kelas.id_kelas = mata_pelajaran.id_kelas WHERE id_mapel = $a");
-                                                                                                while ($rw = mysqli_fetch_row($q)) {
-                                                                                                    echo "Mata Pelajaran - " . $rw[0] . " ($rw[1])";
-                                                                                                }
-                                                                                            } else if ($page == "buatmateri") {
-                                                                                                $a = $_GET['id_mapel'];
-                                                                                                $q = mysqli_query($koneksi, "SELECT nama_mapel,kelas.nama_kelas FROM mata_pelajaran INNER JOIN kelas ON kelas.id_kelas = mata_pelajaran.id_kelas WHERE id_mapel = $a");
-                                                                                                while ($rw = mysqli_fetch_row($q)) {
-                                                                                                    echo  $rw[0] . " - $rw[1]" . " (Buat Materi)";
-                                                                                                }
-                                                                                            } else if ($page == "editmateri") {
-                                                                                                $a = $_GET['id_mapel'];
-                                                                                                $q = mysqli_query($koneksi, "SELECT nama_mapel,kelas.nama_kelas FROM mata_pelajaran INNER JOIN kelas ON kelas.id_kelas = mata_pelajaran.id_kelas WHERE id_mapel = $a");
-                                                                                                while ($rw = mysqli_fetch_row($q)) {
-                                                                                                    echo  $rw[0] . " - $rw[1]" . " (Edit Materi)";
-                                                                                                }
-                                                                                            } else if ($page == "materi") {
-                                                                                                $a = $_GET['id_mapel'];
-                                                                                                $q = mysqli_query($koneksi, "SELECT nama_mapel,kelas.nama_kelas FROM mata_pelajaran INNER JOIN kelas ON kelas.id_kelas = mata_pelajaran.id_kelas WHERE id_mapel = $a");
-                                                                                                while ($rw = mysqli_fetch_row($q)) {
-                                                                                                    echo  $rw[0] . " - $rw[1]" . " (Isi Materi)";
-                                                                                                }
-                                                                                            } else if ($page == "buattugas") {
-                                                                                                $a = $_GET['id_mapel'];
-                                                                                                $q = mysqli_query($koneksi, "SELECT nama_mapel,kelas.nama_kelas FROM mata_pelajaran INNER JOIN kelas ON kelas.id_kelas = mata_pelajaran.id_kelas WHERE id_mapel = $a");
-                                                                                                while ($rw = mysqli_fetch_row($q)) {
-                                                                                                    echo  $rw[0] . " - $rw[1]" . " (Buat Tugas)";
-                                                                                                }
-                                                                                            } else if ($page == "buatsoal") {
-                                                                                                $a = $_GET['id_mapel'];
-                                                                                                $q = mysqli_query($koneksi, "SELECT nama_mapel,kelas.nama_kelas FROM mata_pelajaran INNER JOIN kelas ON kelas.id_kelas = mata_pelajaran.id_kelas WHERE id_mapel = $a");
-                                                                                                while ($rw = mysqli_fetch_row($q)) {
-                                                                                                    echo  $rw[0] . " - $rw[1]" . " (Buat Soal)";
-                                                                                                }
-                                                                                            } else if ($page == "pilgan") {
-                                                                                                $a = $_GET['id_mapel'];
-                                                                                                $q = mysqli_query($koneksi, "SELECT nama_mapel,kelas.nama_kelas FROM mata_pelajaran INNER JOIN kelas ON kelas.id_kelas = mata_pelajaran.id_kelas WHERE id_mapel = $a");
-                                                                                                while ($rw = mysqli_fetch_row($q)) {
-                                                                                                    echo  $rw[0] . " - $rw[1]" . " (Buat Soal Pilihan Ganda)";
-                                                                                                }
-                                                                                            } else if ($page == "editpilgan") {
-                                                                                                $a = $_GET['id_mapel'];
-                                                                                                $q = mysqli_query($koneksi, "SELECT nama_mapel,kelas.nama_kelas FROM mata_pelajaran INNER JOIN kelas ON kelas.id_kelas = mata_pelajaran.id_kelas WHERE id_mapel = $a");
-                                                                                                while ($rw = mysqli_fetch_row($q)) {
-                                                                                                    echo  $rw[0] . " - $rw[1]" . " (Edit Soal Pilihan Ganda)";
-                                                                                                }
-                                                                                            } else if ($page == "essay") {
-                                                                                                $a = $_GET['id_mapel'];
-                                                                                                $q = mysqli_query($koneksi, "SELECT nama_mapel,kelas.nama_kelas FROM mata_pelajaran INNER JOIN kelas ON kelas.id_kelas = mata_pelajaran.id_kelas WHERE id_mapel = $a");
-                                                                                                while ($rw = mysqli_fetch_row($q)) {
-                                                                                                    echo  $rw[0] . " - $rw[1]" . " (Buat Soal Essay)";
-                                                                                                }
-                                                                                            } else if ($page == "editessay") {
-                                                                                                $a = $_GET['id_mapel'];
-                                                                                                $q = mysqli_query($koneksi, "SELECT nama_mapel,kelas.nama_kelas FROM mata_pelajaran INNER JOIN kelas ON kelas.id_kelas = mata_pelajaran.id_kelas WHERE id_mapel = $a");
-                                                                                                while ($rw = mysqli_fetch_row($q)) {
-                                                                                                    echo  $rw[0] . " - $rw[1]" . " (Edit Soal Essay)";
-                                                                                                }
-                                                                                            } else if ($page == "edittugas") {
-                                                                                                $a = $_GET['id_mapel'];
-                                                                                                $q = mysqli_query($koneksi, "SELECT nama_mapel,kelas.nama_kelas FROM mata_pelajaran INNER JOIN kelas ON kelas.id_kelas = mata_pelajaran.id_kelas WHERE id_mapel = $a");
-                                                                                                while ($rw = mysqli_fetch_row($q)) {
-                                                                                                    echo  $rw[0] . " - $rw[1]" . " (Edit Tugas)";
-                                                                                                }
-                                                                                            } else if ($page == "pekerjaansiswa") {
-                                                                                                $a = $_GET['id_mapel'];
-                                                                                                $q = mysqli_query($koneksi, "SELECT nama_mapel,kelas.nama_kelas FROM mata_pelajaran INNER JOIN kelas ON kelas.id_kelas = mata_pelajaran.id_kelas WHERE id_mapel = $a");
-                                                                                                while ($rw = mysqli_fetch_row($q)) {
-                                                                                                    echo  $rw[0] . " - $rw[1]" . " (Pekerjaan Siswa)";
-                                                                                                }
-                                                                                            } else if ($page == "jawaban") {
-                                                                                                $a = $_GET['id_mapel'];
-                                                                                                $q = mysqli_query($koneksi, "SELECT nama_mapel,kelas.nama_kelas FROM mata_pelajaran INNER JOIN kelas ON kelas.id_kelas = mata_pelajaran.id_kelas WHERE id_mapel = $a");
-                                                                                                while ($rw = mysqli_fetch_row($q)) {
-                                                                                                    echo  $rw[0] . " - $rw[1]" . " (Jawaban Siswa)";
-                                                                                                }
-                                                                                            } else if ($page == "nilai") {
-                                                                                                $a = $_GET['id_mapel'];
-                                                                                                $q = mysqli_query($koneksi, "SELECT nama_mapel,kelas.nama_kelas FROM mata_pelajaran INNER JOIN kelas ON kelas.id_kelas = mata_pelajaran.id_kelas WHERE id_mapel = $a");
-                                                                                                while ($rw = mysqli_fetch_row($q)) {
-                                                                                                    echo  $rw[0] . " - $rw[1]" . " (Rekap Nilai)";
-                                                                                                }
-                                                                                            } else if ($page == "rekapnilai") {
-                                                                                                echo  "Rekap Nilai";
-                                                                                            } else if ($page == "lembar_jawab") {
-                                                                                                $a = $_GET['id_mapel'];
-                                                                                                $q = mysqli_query($koneksi, "SELECT nama_mapel,kelas.nama_kelas FROM mata_pelajaran INNER JOIN kelas ON kelas.id_kelas = mata_pelajaran.id_kelas WHERE id_mapel = $a");
-                                                                                                while ($rw = mysqli_fetch_row($q)) {
-                                                                                                    echo  $rw[0] . " - $rw[1]" . " (Lembar Jawaban)";
-                                                                                                }
-                                                                                            } else {
-                                                                                                echo $page;
+                                                                                        if ($page == 'rumah_sakit') {
+                                                                                            echo "Rumah Sakit";
+                                                                                        } else if ($page == 'fasilitas') {
+                                                                                            $a = $_GET['kd_rs'];
+                                                                                            $query = mysqli_query($koneksi, "SELECT nama_rumahsakit FROM rumah_sakit WHERE kode_rumahsakit='$a'");
+                                                                                            while ($data = mysqli_fetch_assoc($query)) {
+                                                                                                $nama_rs = $data['nama_rumahsakit'];
                                                                                             }
+                                                                                            echo "Fasilitas " . $nama_rs;
+                                                                                        } else if ($page == 'permintaan') {
+                                                                                            echo "Data Permintaan";
                                                                                         } else {
                                                                                             echo $page;
                                                                                         }
+
 
                                                                                         ?></h1>
                         <!-- <a href="#" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i
@@ -173,11 +89,9 @@ if (isset($_GET["page"])) {
                     </div>
 
                     <!-- konten ditampilkan disini -->
-                    <?php if ($page == 'profile') {
-                        include "content/" . "all" . "/" . $page . ".php";
-                    } else {
-                        include "content/" . $_SESSION['role'] . "/" . $page . ".php";
-                    } ?>
+                    <?php
+                    include "content/" . $page . ".php";
+                    ?>
                     <!-- ini batas penutup konten -->
 
                 </div>
@@ -190,7 +104,7 @@ if (isset($_GET["page"])) {
             <footer class="sticky-footer bg-white">
                 <div class="container my-auto">
                     <div class="copyright text-center my-auto">
-                        <span>Copyright &copy; SD Muhammadiyah Ambarketawang 3</span>
+                        <span>Copyright &copy; Firdaus Ardiansyah Saleh</span>
                     </div>
                 </div>
             </footer>
@@ -225,137 +139,112 @@ if (isset($_GET["page"])) {
             </div>
         </div>
     </div>
-    <!-- Tambah Data Guru -->
-    <div class="modal fade" id="tambahdataguru" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <!-- Tambah Data Rumah Sakit -->
+    <div class="modal fade" id="tambahdatarumahsakit" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Tambah Data Guru</h5>
+                    <h5 class="modal-title" id="exampleModalLabel">Tambah Data Rumah Sakit</h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
                 </div>
                 <div class="modal-body">
-                    <form action="./content/admin/function/tambahguru.php" method="POST">
+                    <form action="./content/function/tambahrumahsakit.php" method="POST" enctype="multipart/form-data">
+                        <div class="form-group">
+                            <label for="kode" class="col-form-label">Kode:</label>
+                            <input type="number" class="form-control" id="kode" name="kode" required>
+                        </div>
                         <div class="form-group">
                             <label for="nama" class="col-form-label">Nama:</label>
                             <input type="text" class="form-control" id="nama" name="nama" required>
                         </div>
                         <div class="form-group">
-                            <label for="nip" class="col-form-label">NIP:</label>
-                            <input type="text" class="form-control" id="nip" name="nip" required>
-                        </div>
-                        <div class="form-group">
-                            <label for="password" class="col-form-label">Password:</label>
-                            <input type="password" class="form-control" id="password" name="password" required>
-                        </div>
-                        <div class="form-group">
-                            <label for="jeniskelamin" class="col-form-label">Jenis Kelamin:</label>
-                            <select id="jeniskelamin" class="form-control" name="jeniskelamin" required>
-                                <option value="" selected>Pilih Jenis Kelamin</option>
-                                <option value="Laki-laki">Laki-laki</option>
-                                <option value="Perempuan">Perempuan</option>
-                            </select>
-                        </div>
-                        <div class="form-group">
-                            <label for="telepon" class="col-form-label">Telepon:</label>
-                            <input type="number" class="form-control" id="telepon" name="telepon" required>
-                        </div>
-                        <div class="form-group">
-                            <label for="password" class="col-form-label">Email:</label>
-                            <input type="email" class="form-control" id="email" name="email" required>
-                        </div>
-                        <div class="form-group">
-                            <label for="alamat" class="col-form-label">Alamat:</label>
-                            <textarea class="form-control" id="alamat" name="alamat" required></textarea>
-                        </div>
-                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Tutup</button>
-                        <button type="submit" style="float: right;" class="btn btn-primary" onclick="">Kirim</button>
-                    </form>
-                </div>
-            </div>
-        </div>
-    </div>
-    <!-- Tambah Data Kelas -->
-    <div class="modal fade" id="tambahdatakelas" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Tambah Data Kelas</h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                </div>
-                <div class="modal-body">
-                    <form action="./content/admin/function/tambahkelas.php" method="POST">
-                        <div class="form-group">
-                            <label for="nama" class="col-form-label">Nama:</label>
-                            <input type="text" class="form-control" id="nama" name="nama" required>
-                        </div>
-                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Tutup</button>
-                        <button type="submit" style="float: right;" class="btn btn-primary" onclick="">Kirim</button>
-                    </form>
-                </div>
-            </div>
-        </div>
-    </div>
-    <!-- Tambah Data Siswa -->
-    <div class="modal fade" id="tambahdatasiswa" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Tambah Data Siswa</h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                </div>
-                <div class="modal-body">
-                    <form action="./content/admin/function/tambahsiswa.php" method="POST">
-                        <div class="form-group">
-                            <label for="nama" class="col-form-label">Nama:</label>
-                            <input type="text" class="form-control" id="nama" name="nama" required>
-                        </div>
-                        <div class="form-group">
-                            <label for="nip" class="col-form-label">NIS:</label>
-                            <input type="text" class="form-control" id="nis" name="nis" required>
-                        </div>
-                        <div class="form-group">
-                            <label for="password" class="col-form-label">Password:</label>
-                            <input type="password" class="form-control" id="password" name="password" required>
-                        </div>
-                        <div class="form-group">
-                            <label for="jeniskelamin" class="col-form-label">Jenis Kelamin:</label>
-                            <select id="jeniskelamin" class="form-control" name="jeniskelamin" required>
-                                <option value="" selected>Pilih Jenis Kelamin</option>
-                                <option value="Laki-laki">Laki-laki</option>
-                                <option value="Perempuan">Perempuan</option>
-                            </select>
-                        </div>
-                        <div class="form-group">
-                            <label for="telepon" class="col-form-label">Telepon:</label>
-                            <input type="number" class="form-control" id="telepon" name="telepon" required>
-                        </div>
-                        <div class="form-group">
-                            <label for="password" class="col-form-label">Email:</label>
-                            <input type="email" class="form-control" id="email" name="email" required>
-                        </div>
-                        <div class="form-group">
-                            <label for="alamat" class="col-form-label">Alamat:</label>
-                            <textarea class="form-control" id="alamat" name="alamat" required></textarea>
+                            <label for="jenis" class="col-form-label">Jenis:</label>
+                            <input type="text" class="form-control" id="jenis" name="jenis" required>
                         </div>
                         <div class="form-group">
                             <label for="kelas" class="col-form-label">Kelas:</label>
                             <select id="kelas" class="form-control" name="kelas" required>
                                 <option value="" selected>Pilih Kelas</option>
-                                <?php
-                                $query = mysqli_query($koneksi, "SELECT * FROM kelas");
-                                while ($wi = mysqli_fetch_array($query)) {
-                                ?>
-                                    <option value="<?php echo $wi['id_kelas'] ?> "><?php echo $wi['nama_kelas'] ?></option>
-                                <?php
-                                }
-                                ?>
+                                <option value="A">A</option>
+                                <option value="B">B</option>
+                                <option value="C">C</option>
+                                <option value="D">D</option>
                             </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="pemilik" class="col-form-label">Pemilik:</label>
+                            <input type="text" class="form-control" id="pemilik" name="pemilik" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="telp" class="col-form-label">Telepon:</label>
+                            <input type="text" class="form-control" id="telp" name="telp" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="alamat" class="col-form-label">Alamat:</label>
+                            <input type="text" class="form-control" id="alamat" name="alamat" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="latitude" class="col-form-label">Latitude:</label>
+                            <input type="text" class="form-control" id="latitude" name="latitude" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="longitude" class="col-form-label">Longitude:</label>
+                            <input type="text" class="form-control" id="longitude" name="longitude" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="gambar" class="col-form-label">Gambar:</label>
+                            <input type="file" class="form-control" id="gambar" name="gambar" required>
+                        </div>
+
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Tutup</button>
+                        <button type="submit" style="float: right;" class="btn btn-primary" onclick="">Kirim</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Tambah Data Fasilitas -->
+    <div class="modal fade" id="tambahdatafasilitas" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Tambah Data Fasilitas</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <form action="./content/function/tambahfasilitas.php" method="POST">
+                        <div class="form-group">
+                            <input type="text" class="form-control" id="kode" name="kode" value="<?= $kd ?>" required hidden>
+                            <label for="fasilitas" class="col-form-label">Nama Fasilitas:</label>
+                            <input type="text" class="form-control" id="fasilitas" name="fasilitas" required>
+                        </div>
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Tutup</button>
+                        <button type="submit" style="float: right;" class="btn btn-primary" onclick="">Kirim</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Tambah Data Pelayanan -->
+    <div class="modal fade" id="tambahdatapelayanan" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Tambah Data Pelayanan</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <form action="./content/function/tambahpelayanan.php" method="POST">
+                        <div class="form-group">
+                            <input type="text" class="form-control" id="kode" name="kode" value="<?= $kd ?>" required hidden>
+                            <label for="pelayanan" class="col-form-label">Nama Pelayanan:</label>
+                            <input type="text" class="form-control" id="pelayanan" name="pelayanan" required>
                         </div>
                         <button type="button" class="btn btn-secondary" data-dismiss="modal">Tutup</button>
                         <button type="submit" style="float: right;" class="btn btn-primary" onclick="">Kirim</button>
@@ -365,62 +254,295 @@ if (isset($_GET["page"])) {
         </div>
     </div>
 
-    <!-- Tambah Data Mata Pelajaran -->
-    <div class="modal fade" id="tambahdatamapel" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Tambah Mata Pelajaran</h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                </div>
-                <div class="modal-body">
-                    <form action="./content/admin/function/tambahmapel.php" method="POST">
-                        <div class="form-group">
-                            <label for="nama" class="col-form-label">Kode Mata Pelajaran:</label>
-                            <input type="text" class="form-control" id="kode" name="kode" required>
-                        </div>
-                        <div class="form-group">
-                            <label for="nip" class="col-form-label">Nama Mata Pelajaran:</label>
-                            <input type="text" class="form-control" id="nama" name="nama" required>
-                        </div>
-                        <div class="form-group">
-                            <label for="kelas" class="col-form-label">Kelas:</label>
-                            <select id="kelas" class="form-control" name="kelas" required>
-                                <option value="" selected>Pilih Kelas</option>
-                                <?php
-                                $query = mysqli_query($koneksi, "SELECT * FROM kelas");
-                                while ($wi = mysqli_fetch_array($query)) {
-                                ?>
-                                    <option value="<?php echo $wi['id_kelas'] ?> "><?php echo $wi['nama_kelas'] ?></option>
-                                <?php
-                                }
-                                ?>
-                            </select>
-                        </div>
-                        <div class="form-group">
-                            <label for="guru" class="col-form-label">Guru Pengampu:</label>
-                            <select id="guru" class="form-control" name="guru" required>
-                                <option value="" selected>Pilih Guru Pengampu</option>
-                                <?php
-                                $query = mysqli_query($koneksi, "SELECT * FROM guru");
-                                while ($wi = mysqli_fetch_array($query)) {
-                                ?>
-                                    <option value="<?php echo $wi['id_guru'] ?> "><?php echo $wi['nama'] ?></option>
-                                <?php
-                                }
-                                ?>
-                            </select>
-                        </div>
-                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Tutup</button>
-                        <button type="submit" style="float: right;" class="btn btn-primary" onclick="">Kirim</button>
-                    </form>
-                </div>
-            </div>
-        </div>
-    </div>
 
+    <?php
+    $month = date('m');
+    $year = date('Y');
+
+    if ($month == 12) {
+        $bln = array("September", "Oktober", "November", "Desember");
+        $jmlh = array();
+        for ($i = 9; $i <= 12; $i++) {
+            $qry = mysqli_query($koneksi, "SELECT   MONTH(waktu), COUNT(*) 
+            FROM      history
+            WHERE     YEAR(waktu) = '$year' AND MONTH(waktu) = '$i' 
+            GROUP BY  MONTH(waktu)");
+            if (mysqli_num_rows($qry) == 0) {
+                array_push($jmlh, 0);
+            } else {
+                while ($rw = mysqli_fetch_array($qry)) {
+                    array_push($jmlh, $rw[1]);
+                }
+            }
+        }
+    } else if ($month == 11) {
+        $bln = array("Agustus", "September", "Oktober", "November");
+        $jmlh = array();
+        for ($i = 8; $i <= 11; $i++) {
+            $qry = mysqli_query($koneksi, "SELECT   MONTH(waktu), COUNT(*) 
+            FROM      history
+            WHERE     YEAR(waktu) = '$year' AND MONTH(waktu) = '$i' 
+            GROUP BY  MONTH(waktu)");
+            if (mysqli_num_rows($qry) == 0) {
+                array_push($jmlh, 0);
+            } else {
+                while ($rw = mysqli_fetch_array($qry)) {
+                    array_push($jmlh, $rw[1]);
+                }
+            }
+        }
+    } else if ($month == 10) {
+        $bln = array("Juli", "Agustus", "September", "Oktober");
+        $jmlh = array();
+        for ($i = 7; $i <= 10; $i++) {
+            $qry = mysqli_query($koneksi, "SELECT   MONTH(waktu), COUNT(*) 
+            FROM      history
+            WHERE     YEAR(waktu) = '$year' AND MONTH(waktu) = '$i' 
+            GROUP BY  MONTH(waktu)");
+            if (mysqli_num_rows($qry) == 0) {
+                array_push($jmlh, 0);
+            } else {
+                while ($rw = mysqli_fetch_array($qry)) {
+                    array_push($jmlh, $rw[1]);
+                }
+            }
+        }
+    } else if ($month == 9) {
+        $bln = array("Juni", "Juli", "Agustus", "September");
+        $jmlh = array();
+        for ($i = 6; $i <= 9; $i++) {
+            $qry = mysqli_query($koneksi, "SELECT   MONTH(waktu), COUNT(*) 
+            FROM      history
+            WHERE     YEAR(waktu) = '$year' AND MONTH(waktu) = '$i' 
+            GROUP BY  MONTH(waktu)");
+            if (mysqli_num_rows($qry) == 0) {
+                array_push($jmlh, 0);
+            } else {
+                while ($rw = mysqli_fetch_array($qry)) {
+                    array_push($jmlh, $rw[1]);
+                }
+            }
+        }
+    } else if ($month == 8) {
+        $bln = array("Mei", "Juni", "Juli", "Agustus");
+        $jmlh = array();
+        for ($i = 5; $i <= 8; $i++) {
+            $qry = mysqli_query($koneksi, "SELECT   MONTH(waktu), COUNT(*) 
+            FROM      history
+            WHERE     YEAR(waktu) = '$year' AND MONTH(waktu) = '$i' 
+            GROUP BY  MONTH(waktu)");
+            if (mysqli_num_rows($qry) == 0) {
+                array_push($jmlh, 0);
+            } else {
+                while ($rw = mysqli_fetch_array($qry)) {
+                    array_push($jmlh, $rw[1]);
+                }
+            }
+        }
+    } else if ($month == 7) {
+        $bln = array("April", "Mei", "Juni", "Juli");
+        $jmlh = array();
+        for ($i = 4; $i <= 7; $i++) {
+            $qry = mysqli_query($koneksi, "SELECT   MONTH(waktu), COUNT(*) 
+            FROM      history
+            WHERE     YEAR(waktu) = '$year' AND MONTH(waktu) = '$i' 
+            GROUP BY  MONTH(waktu)");
+            if (mysqli_num_rows($qry) == 0) {
+                array_push($jmlh, 0);
+            } else {
+                while ($rw = mysqli_fetch_array($qry)) {
+                    array_push($jmlh, $rw[1]);
+                }
+            }
+        }
+    } else if ($month == 6) {
+        $bln = array("Maret", "April", "Mei", "Juni");
+        $jmlh = array();
+        for ($i = 3; $i <= 6; $i++) {
+            $qry = mysqli_query($koneksi, "SELECT   MONTH(waktu), COUNT(*) 
+            FROM      history
+            WHERE     YEAR(waktu) = '$year' AND MONTH(waktu) = '$i' 
+            GROUP BY  MONTH(waktu)");
+            if (mysqli_num_rows($qry) == 0) {
+                array_push($jmlh, 0);
+            } else {
+                while ($rw = mysqli_fetch_array($qry)) {
+                    array_push($jmlh, $rw[1]);
+                }
+            }
+        }
+    } else if ($month == 5) {
+        $bln = array("Februari", "Maret", "April", "Mei");
+        $jmlh = array();
+        for ($i = 2; $i <= 5; $i++) {
+            $qry = mysqli_query($koneksi, "SELECT   MONTH(waktu), COUNT(*) 
+            FROM      history
+            WHERE     YEAR(waktu) = '$year' AND MONTH(waktu) = '$i' 
+            GROUP BY  MONTH(waktu)");
+            if (mysqli_num_rows($qry) == 0) {
+                array_push($jmlh, 0);
+            } else {
+                while ($rw = mysqli_fetch_array($qry)) {
+                    array_push($jmlh, $rw[1]);
+                }
+            }
+        }
+    } else if ($month == 4) {
+        $bln = array("Januari", "Februari", "Maret", "April");
+        $jmlh = array();
+        for ($i = 1; $i <= 4; $i++) {
+            $qry = mysqli_query($koneksi, "SELECT   MONTH(waktu), COUNT(*) 
+            FROM      history
+            WHERE     YEAR(waktu) = '$year' AND MONTH(waktu) = '$i' 
+            GROUP BY  MONTH(waktu)");
+            if (mysqli_num_rows($qry) == 0) {
+                array_push($jmlh, 0);
+            } else {
+                while ($rw = mysqli_fetch_array($qry)) {
+                    array_push($jmlh, $rw[1]);
+                }
+            }
+        }
+    } else if ($month == 3) {
+        $bln = array("Januari", "Februari", "Maret");
+        $jmlh = array();
+        for ($i = 1; $i <= 3; $i++) {
+            $qry = mysqli_query($koneksi, "SELECT   MONTH(waktu), COUNT(*) 
+            FROM      history
+            WHERE     YEAR(waktu) = '$year' AND MONTH(waktu) = '$i' 
+            GROUP BY  MONTH(waktu)");
+            if (mysqli_num_rows($qry) == 0) {
+                array_push($jmlh, 0);
+            } else {
+                while ($rw = mysqli_fetch_array($qry)) {
+                    array_push($jmlh, $rw[1]);
+                }
+            }
+        }
+    } else if ($month == 2) {
+        $bln = array("Januari", "Februari");
+        $jmlh = array();
+        for ($i = 1; $i <= 2; $i++) {
+            $qry = mysqli_query($koneksi, "SELECT   MONTH(waktu), COUNT(*) 
+            FROM      history
+            WHERE     YEAR(waktu) = '$year' AND MONTH(waktu) = '$i' 
+            GROUP BY  MONTH(waktu)");
+            if (mysqli_num_rows($qry) == 0) {
+                array_push($jmlh, 0);
+            } else {
+                while ($rw = mysqli_fetch_array($qry)) {
+                    array_push($jmlh, $rw[1]);
+                }
+            }
+        }
+    } else if ($month == 1) {
+        $bln = array("Januari");
+        $jmlh = array();
+        for ($i = 1; $i <= 1; $i++) {
+            $qry = mysqli_query($koneksi, "SELECT   MONTH(waktu), COUNT(*) 
+            FROM      history
+            WHERE     YEAR(waktu) = '$year' AND MONTH(waktu) = '$i' 
+            GROUP BY  MONTH(waktu)");
+            if (mysqli_num_rows($qry) == 0) {
+                array_push($jmlh, 0);
+            } else {
+                while ($rw = mysqli_fetch_array($qry)) {
+                    array_push($jmlh, $rw[1]);
+                }
+            }
+        }
+    }
+
+    ?>
+    <script type="text/javascript">
+        var ctx = document.getElementById("barchart").getContext("2d");
+        var data = {
+            labels: [<?php $ii = 0;
+                        while ($ii < count($bln)) {
+                            echo '"' . $bln[$ii] . '",';
+                            $ii++;
+                        } ?>],
+            datasets: [{
+                label: "Jumlah Permintaan",
+                data: [<?php $ii = 0;
+                        while ($ii < count($jmlh)) {
+                            echo '"' . $jmlh[$ii] . '",';
+                            $ii++;
+                        } ?>],
+                backgroundColor: [
+                    '#29B0D0',
+                    '#2A516E',
+                    '#F07124',
+                    '#CBE0E3',
+                    '#979193'
+                ]
+            }]
+        };
+
+        var myBarChart = new Chart(ctx, {
+            type: 'bar',
+            data: data,
+            options: {
+                legend: {
+                    display: false
+                },
+                barValueSpacing: 20,
+                scales: {
+                    yAxes: [{
+                        ticks: {
+                            min: 0,
+                        }
+                    }],
+                    xAxes: [{
+                        gridLines: {
+                            color: "rgba(0, 0, 0, 0)",
+                        }
+                    }]
+                }
+            }
+        });
+    </script>
+
+    <?php
+    $kelas_a  = mysqli_query($koneksi, "SELECT * FROM rumah_sakit  WHERE kelas_rumahsakit='A'");
+    $kelas_b  = mysqli_query($koneksi, "SELECT * FROM rumah_sakit  WHERE kelas_rumahsakit='B'");
+    $kelas_c  = mysqli_query($koneksi, "SELECT * FROM rumah_sakit  WHERE kelas_rumahsakit='C'");
+    $kelas_d  = mysqli_query($koneksi, "SELECT * FROM rumah_sakit  WHERE kelas_rumahsakit='D'");
+    $kelas_a = mysqli_num_rows($kelas_a);
+    $kelas_b = mysqli_num_rows($kelas_b);
+    $kelas_c = mysqli_num_rows($kelas_c);
+    $kelas_d = mysqli_num_rows($kelas_d);
+    ?>
+    <script type="text/javascript">
+        var ctx = document.getElementById("piechart").getContext("2d");
+        var data = {
+            labels: ["Kelas A", "Kelas B", "Kelas C", "Kelas D"],
+            datasets: [{
+                label: "Penjualan Barang",
+                data: [<?php
+                        echo '"' . $kelas_a . '",';
+                        echo '"' . $kelas_b . '",';
+                        echo '"' . $kelas_c . '",';
+                        echo '"' . $kelas_d . '",';
+                        ?>],
+                backgroundColor: [
+                    '#29B0D0',
+                    '#2A516E',
+                    '#F07124',
+                    '#CBE0E3',
+                    '#979193'
+                ]
+            }]
+        };
+
+        var myPieChart = new Chart(ctx, {
+            type: 'doughnut',
+            data: data,
+            options: {
+                responsive: true
+            }
+        });
+    </script>
     <?php include 'layouts/script.php' ?>
     <script src="https://cdn.datatables.net/1.11.4/js/jquery.dataTables.min.js"></script>
     <script src="https://cdn.datatables.net/1.11.4/js/dataTables.bootstrap5.min.js"></script>

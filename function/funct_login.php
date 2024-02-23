@@ -1,68 +1,32 @@
 <?php
 require '../database/db.php';
 session_start();
-function cekLogin($username, $password, $tahap)
-{
-    global $koneksi;
-    $kolom = "";
-    switch ($tahap) {
-        case 1:
-            $kolom = "username";
-            $role = "admin";
-            $target = "admin";
-            break;
+if (isset($_POST['login'])) {
+    $username = $_POST['username'];
+    $password = md5($_POST['password']);
 
-        case 2:
-            $kolom = "nip";
-            $role = "guru";
-            $target = "GURU";
-            break;
 
-        case 3:
-            $kolom = "nis";
-            $role = "siswa";
-            $target = "siswa";
-            break;
-        default:
-?>
-
-            <script>
-                alert('gagal login');
-                document.location = "../index.php";
-            </script>
-
-        <?php
-
-            break;
-    }
-    // $password = md5($password);
-    $query = mysqli_query($koneksi, "SELECT * FROM $role WHERE $kolom='$username' AND password='$password'");
+    $query = mysqli_query($koneksi, "SELECT * FROM admin WHERE username='$username' AND password='$password'");
     if (mysqli_num_rows($query) == 0) {
-        $tahap++;
-
-        cekLogin($username, $password, $tahap);
+        echo '<script language="javascript">
+					alert("Username Tidak ditemukan!!!"); 
+					document.location="../index.php";
+				 </script>';
     } else {
         $result = mysqli_fetch_assoc($query);
 
-        $_SESSION['username'] = $result[$kolom];
-        $_SESSION['role'] = $role;
-
-        ?>
+        $_SESSION['id_admin'] = $result['id_admin'];
+        $_SESSION['username'] = $result['username'];
+        $_SESSION['password'] = $result['password'];
+        $_SESSION['nama'] = $result['nama'];
+?>
 
         <script>
-            alert("Selamat Datang <?php echo $_SESSION['username']; ?> di E-Learning SD Muhammadiyah Ambarketawang 3");
+            alert("Selamat Datang <?php echo $_SESSION['nama']; ?> di Aplikasi Pencarian Rumah Sakit");
+            document.location = "../views/index.php";
         </script>
 
 <?php
-        header('Location: ../views/index.php');
     }
-}
-
-if (isset($_POST['login'])) {
-    $username = $_POST['username'];
-    $password = $_POST['password'];
-    $password = md5($password);
-
-    cekLogin($username, $password, 1);
 }
 ?>
